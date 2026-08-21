@@ -2,7 +2,9 @@
 
 This project contains demonstration code for applying input guardrails to LLM inference calls. It is **not production code** — the examples are intentionally simple to illustrate the concepts and flow clearly.
 
-The core idea: before sending a user prompt to an LLM for inference, run a guardrail check to detect prompt injection or policy violations. Only if the check passes does the actual inference call proceed.
+The core idea: before sending a user prompt to an LLM for inference, run a guardrail check to detect prompt injection attempts. Only if the check passes does the actual inference call proceed. The same check is applied to tool results returned to the model — a common indirect prompt injection vector, where an attacker embeds instructions in external data (an email, a document, a web page) that the model will read.
+
+**Scope:** these guardrails check specifically for prompt injection — attempts to hijack or override the model's behaviour through crafted input. They do not check for off-topic requests, harmful content, policy violations, PII, or other categories. NeMo Guardrails supports those rail types, but they are not configured here.
 
 ---
 
