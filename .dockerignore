@@ -1,0 +1,11 @@
+.env
+.venv
+__pycache__
+*.pyc
+*.pyo
+rust/
+.git/
+GATEWAY-TASK.md
+gateway.py
+inference.py
+inference_tools.py

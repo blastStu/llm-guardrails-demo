@@ -1,0 +1,21 @@
+model_list:
+  - model_name: "*"
+    litellm_params:
+      model: openai/*
+      api_base: os.environ/UPSTREAM_BASE_URL
+      api_key: os.environ/OPENAICOMPATIBLE_API_KEY
+
+guardrails:
+  - guardrail_name: nemo-input
+    litellm_params:
+      guardrail: nemo_guardrail.NemoGuardrail
+      mode: pre_call
+      default_on: true
+      rails_config_path: ./config
+
+litellm_settings:
+  # No drop_params — pass all body fields (reasoning_effort, temperature, etc.) through unchanged.
+  drop_params: false
+
+# No master_key — the proxy does not authenticate incoming requests itself.
+# The client's API key is passed straight through to the upstream.

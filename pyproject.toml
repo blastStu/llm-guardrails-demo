@@ -1,0 +1,26 @@
+[project]
+name = "nemo-guardrails"
+version = "0.1.0"
+description = "LLM inference with OpenAI chat completions"
+requires-python = ">=3.11"
+dependencies = [
+    "openai>=1.0.0",
+    "python-dotenv>=1.0.0",
+    "nemoguardrails>=0.23.0",
+    "litellm[proxy] @ git+https://github.com/BerriAI/litellm.git@f9b86b253a3fb87d003bb5ccc80c7d89aa91dd62",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]
